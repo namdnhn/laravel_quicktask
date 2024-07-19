@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskController;
 
-Auth::loginUsingId(2);
 Route::get('/', function () {
     return view('welcome');
 });
