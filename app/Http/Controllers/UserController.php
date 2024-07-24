@@ -12,7 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return view('user.index', [
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -20,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -28,7 +30,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $user = User::create([
+        //     'firstname' => $request->input('firstname'),
+        //     'lastname' => $request->input('lastname'),
+        //     'username' => $request->input('username'),
+        //     'email' => $request->input('email'),
+        //     'password' => bcrypt($request->input('password')),
+        //     'is_admin' => false,
+        //     'is_active' => true,
+        // ]);
+
+        // // You can add any additional logic or redirect to a different page here
+
+        // return redirect()->route('user.index');
     }
 
     /**
@@ -44,7 +58,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', compact('user'));
     }
 
     /**

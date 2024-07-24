@@ -20,6 +20,7 @@ class CreateInitialAdminAccount extends Seeder
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345678'),
             'is_active' => true,
+            'is_admin' => true,
             'username' => 'admin',
         ]);
     }
