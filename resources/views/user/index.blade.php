@@ -12,12 +12,13 @@
                     {{ __("User list") }}
                 </div>
             </div>
-            <x-primary-button class="mt-4">
+            <x-primary-button id="create-user-button" class="mt-4 mb-4">
                 {{ __("Create User") }}
             </x-primary-button>
             <table class="table">
                 <thead>
                     <tr>
+                        <th class="text-gray-900 dark:text-gray-100 text-center" scope="col">#</th>
                         <th class="text-gray-900 dark:text-gray-100 text-center" scope="col">{{ __("First name") }}</th>
                         <th class="text-gray-900 dark:text-gray-100 text-center" scope="col">{{ __("Last name") }}</th>
                         <th class="text-gray-900 dark:text-gray-100 text-center" scope="col">{{ __("Email") }}</th>
@@ -27,24 +28,30 @@
                 </thead>
                 <tbody>
                     @foreach($users as $user)
-                    <tr>
-                        <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->firstname }}</td>
-                        <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->lastname }}</td>
-                        <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->email }}</td>
-                        <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->username }}</td>
-                        <td class="text-gray-900 dark:text-gray-100 text-center">
-                           <x-primary-button class="mt-4">
-                            {{ __("Edit") }}
-                           </x-primary-button>
-                           <x-primary-button class="mt-4">
-                            {{ __("Delete") }}
-                            </x-primary-button>
-
-                        </td>
-                    </tr>
+                        <tr>
+                            <th class="text-gray-900 dark:text-gray-100 text-center">{{ $user->id }}</th>
+                            <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->firstname }}</td>
+                            <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->lastname }}</td>
+                            <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->email }}</td>
+                            <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->username }}</td>
+                            <td class="text-gray-900 dark:text-gray-100 text-center">
+                                <x-primary-button class="mt-4">
+                                    {{ __("Edit") }}
+                                </x-primary-button>
+                                <x-primary-button class="mt-4">
+                                    {{ __("Delete") }}
+                                </x-primary-button>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    document.getElementById('create-user-button').addEventListener('click', function() {
+        window.location.href = "{{ route('users.create') }}";
+    });
+</script>
